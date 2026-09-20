@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+:root {
+  --color-bg-cream: #FFF9F0;
+  --color-surface-white: #FFFFFF;
+  --color-primary: #1D4E89;
+  --color-accent-marigold: #F79D1E;
+  --color-alert-coral: #E63946;
+  --color-resolved-moss: #3A9D5D;
+  --color-text-ink: #1B2A41;
+  --color-muted: #64748B;
+  --color-borders: #EADFCB;
+  
+  --font-heading: 'Bricolage Grotesque', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg-cream);
+  color: var(--color-text-ink);
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading);
+}
+
+#map, #report-map {
+  z-index: 10;
+}
+
+/* Custom Marker Styles */
+.leaflet-div-icon {
+  background: transparent;
+  border: none;
+}
+.custom-marker {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border: 2px solid white;
+}
+.custom-marker svg {
+  width: 18px;
+  height: 18px;
+}
+.marker-infrastructure { background-color: var(--color-accent-marigold); }
+.marker-safety { background-color: var(--color-alert-coral); }
+.marker-child_welfare { background-color: var(--color-primary); }
+.marker-environment { background-color: var(--color-resolved-moss); }
+.marker-other { background-color: var(--color-text-ink); }
+
+.marker-resolved {
+  opacity: 0.6;
+  background-color: var(--color-resolved-moss) !important;
+}
+
+/* Hotspot Cluster */
+.hotspot-circle {
+  fill: var(--color-alert-coral);
+  fill-opacity: 0.3;
+  stroke: var(--color-alert-coral);
+  stroke-width: 2;
+}
+
+/* View transitions */
+.view-section {
+  display: none;
+}
+.view-section.active {
+  display: block;
+}
+
+/* Tailwind custom utilities mapping for dynamic injection */
+.bg-cream { background-color: var(--color-bg-cream); }
+.bg-primary { background-color: var(--color-primary); }
+.text-primary { color: var(--color-primary); }
+.bg-marigold { background-color: var(--color-accent-marigold); }
+.text-marigold { color: var(--color-accent-marigold); }
+.bg-alert { background-color: var(--color-alert-coral); }
+.bg-resolved { background-color: var(--color-resolved-moss); }
+.border-custom { border-color: var(--color-borders); }
+
+/* Bottom sheet for mobile */
+@media (max-width: 768px) {
+  .bottom-sheet {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    box-shadow: 0 -4px 6px -1px rgb(0 0 0 / 0.1);
+    z-index: 50;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+  }
+  .bottom-sheet.open {
+    transform: translateY(0);
+  }
+}
